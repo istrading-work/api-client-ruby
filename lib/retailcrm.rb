@@ -14,7 +14,7 @@ require 'json'
 class Retailcrm
 
   def initialize(url, key)
-    @version = 3
+    @version = 4
     @url = "#{url}/api/v#{@version}/"
     @key = key
     @params = { :apiKey => @key }
@@ -456,7 +456,7 @@ class Retailcrm
   end
 
   # Get delivery types
-  # http://www.retailcrm.ru/docs/Developers/ApiVersion3
+  # http://www.retailcrm.ru/docs/Developers/ApiVersion4
   #
   def delivery_types
     url = "#{@url}reference/delivery-types"
