@@ -22,6 +22,27 @@ class Retailcrm
     @ids = nil
   end
 
+
+  ##
+  # === Get users by filter
+  # http://www.retailcrm.ru/docs/Developers/ApiVersion4
+  #
+  # Example:
+  #  >> Retailcrm.users({:email => 'test@example.com'}, 50, 2)
+  #  => {...}
+  #
+  # Arguments:
+  #   filter (Hash)
+  #   limit (Integer) (20|50|100)
+  #   page (Integer)
+  def users(filter = nil, limit = 20, page = 1)
+    url = "#{@url}users"
+    @params[:limit] = limit
+    @params[:page] = page
+    @filter = filter.to_a.map { |x| "filter[#{x[0]}]=#{x[1]}" }.join('&')
+    make_request(url)
+  end
+  
   ##
   # === Get orders by filter
   # http://www.retailcrm.ru/docs/Developers/ApiVersion3
